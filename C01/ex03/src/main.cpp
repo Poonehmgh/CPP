@@ -8,14 +8,17 @@ int main()
     Weapon club("crude spike");
     HumanA bob("Bob", club);
     bob.attack();
-    club.setType("other type");
+    club.setType("some other type of club");
     bob.attack();
     }
     {
     Weapon club("crude spike");
-    HumanA bob("Bob", club);
-    bob.attack();
-    club.setType("other type");
-    bob.attack();
-    }
+    HumanB Jo("Jo");
+    Jo.set_weapon(club.getType());
+    Jo.attack();
+    club.setType("some other type of club");    
+    Jo.set_weapon(club.getType());
+    Jo.attack();
+    delete Jo.get_weapon();
+    }  
 }

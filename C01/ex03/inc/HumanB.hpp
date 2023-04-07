@@ -6,9 +6,9 @@ class HumanB
 {
     public:
     HumanB(std::string name);
-    void    set_weapon(Weapon X);
-    Weapon  get_weapon(void);
-    void    attack();
+    void    attack() const;
+    void set_weapon(std::string weapon);
+    Weapon *get_weapon(void) const;
     private:
     Weapon *_weapon;
     std::string _name;
