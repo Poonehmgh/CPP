@@ -21,9 +21,11 @@ int main(int argc, char **argv)
     std::ifstream inputFile(file_name);
     if (!inputFile.is_open())
         return (std::cerr<<"error in openning file.\n", 1);
+
     std::stringstream stringBuffer;
     stringBuffer << inputFile.rdbuf();
     std::string contents = stringBuffer.str();
+
     size_t pos = 0;
     while ((pos = contents.find(s1, pos)) != std::string::npos) 
     {
@@ -31,6 +33,7 @@ int main(int argc, char **argv)
         pos += s2.length();
     }
     inputFile.close();
+
     std::ofstream outputFile(file_name.append(".replace"));
     if (!outputFile.is_open())
         return (std::cerr<<"error, unable to create output.\n", 1);
