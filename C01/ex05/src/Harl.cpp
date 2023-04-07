@@ -30,5 +30,5 @@ void harl::complain(std::string level)
         if (levels[i] == level)
             return((this->*funcPtr[i])());
     }
-    std::cerr<<"not matched with the levels.\n";
+    std::cerr<<"no match for the input.\n";
 }
