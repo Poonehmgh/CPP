@@ -11,7 +11,7 @@ Fixed::Fixed(const int a)
 Fixed::Fixed(const float a)
 {
     std::cout<<"Float constructor called.\n";
-    _fixPoint_ = round(a * (1 <<_numFracBits_));
+    _fixPoint_ = roundf(a * (1 <<_numFracBits_));
 }
 Fixed &Fixed::operator=(Fixed const &src) // i dont know what is the meaning of first handle. ???????
 {
