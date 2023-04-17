@@ -19,11 +19,15 @@ ScavTrap::~ScavTrap()
 ScavTrap::ScavTrap(ScavTrap &src)
 {
     *this = src;
+    std::cout<< "ScavTrap \033[32m " << _name_<< "\033[0m copy constructor is called.\n";
 }
 
 ScavTrap    &ScavTrap::operator=(ScavTrap const &src)
 {
     _name_ = src.getName();
+    _hitPoints_ = src.getHitPoints();
+    _energyPoints_ = src.getEnergyPoints();
+    _attackDamage_ = src.getAttackDamage();
     return(*this);
 }
 
