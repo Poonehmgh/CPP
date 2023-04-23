@@ -41,4 +41,9 @@ int main (void)
         array[i]->makeSound();
         delete array[i];
     }
+    /*          extra tests for leak        */
+    // const Animal* j = new Dog();
+    // const Animal* i = new Cat();
+    // delete j;//should not create a leak
+    // delete i;
 }
