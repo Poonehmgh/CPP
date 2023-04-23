@@ -15,14 +15,16 @@ Dog::Dog(std::string type)
 
 Dog::~Dog()
 {
-    delete this->_myBrain_;
+    if (_myBrain_)
+        delete _myBrain_;
+    _myBrain_ = NULL;
     std::cout << "Dog destructor called. Brain deteleted.\n";
 }
 
 Dog::Dog(Dog const &src) : Animal(src)
 {
     *this = src;
-    this->_myBrain_ = new Brain;
+    _myBrain_ = new Brain;
     *_myBrain_ = *src._myBrain_;
     std::cout << "Dog copy constructor is called. Brain is allocated.\n";
 }
@@ -31,7 +33,8 @@ Dog &Dog::operator=(Dog const &src)
 {
     this->setType(src.getType());
     std::cout << "Dog copy operator called.\n";
-    this->_myBrain_ = src._myBrain_;
+    _myBrain_ = new Brain();
+    _myBrain_ = src._myBrain_;
     return(*this);
 }
 

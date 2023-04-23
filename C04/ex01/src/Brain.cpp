@@ -19,7 +19,7 @@ Brain::Brain(Brain const &src)
 
 Brain  &Brain::operator=(Brain const &src)
 {
-    for (int i = 0; i <= src.getIndex(); i++)
+    for (int i = 0; i < src.getIndex(); i++)
         this->setIdea(src.getIdea(i));
     std::cout << "Brain equality operator is called.\n";
     return (*this);
@@ -27,11 +27,11 @@ Brain  &Brain::operator=(Brain const &src)
 
 std::string Brain::getIdea(int i) const
 {
-    if (i < _index_ && i >= 0)
+    if (i <= _index_ && i >= 0)
         return(_ideas_[i]);
     else
         std::cout << RED <<"Brain doesnt recall such thing.\n" << RESET;
-    return (NULL);
+    return ("No Thought.");
 }
 
 void    Brain::setIdea(std::string idea)

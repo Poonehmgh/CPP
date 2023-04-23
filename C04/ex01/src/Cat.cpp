@@ -8,14 +8,16 @@ Cat::Cat()
 
 Cat::~Cat()
 {
-    delete this->_myBrain_;
+   if (_myBrain_)
+        delete _myBrain_;
+    _myBrain_ = NULL;
     std::cout << "Cat destructor called. Brain deleted.\n";
 }
 
 Cat::Cat(Cat const &src) : Animal(src)
 {
     *this = src;
-    this->_myBrain_ = new Brain;
+    _myBrain_ = new Brain;
     *_myBrain_ = *src._myBrain_;
     std::cout << "Cat copy constructor is called. Brain is allocated.\n";
 }
@@ -24,7 +26,8 @@ Cat &Cat::operator=(Cat const &src)
 {
     this->setType(src.getType());
     std::cout << "Cat copy operator called.\n";
-    this->_myBrain_ = src._myBrain_;
+    _myBrain_ = new Brain();
+    _myBrain_ = src._myBrain_;
     return(*this);
 }
 
