@@ -2,12 +2,12 @@
 # include<fstream>
 # include <cstdlib>
 
-RobotomyRequestForm::RobotomyRequestForm() : aForm("RobotomyRequestForm", 45, 72)
+RobotomyRequestForm::RobotomyRequestForm() : aForm("RobotomyRequestForm", 72, 45)
 {
     _target_ = "default target";
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : aForm("RobotomyRequestForm", 45, 72)
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : aForm("RobotomyRequestForm", 72, 45)
 {
     _target_ = target;
 }

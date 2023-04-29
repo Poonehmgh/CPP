@@ -27,14 +27,14 @@ class Bureaucrat
             }
         };
         std::string getName() const;
-        int getGrade() const;
+        unsigned int getGrade() const;
         void    incrementGrade();
         void    decrementGrade();
         void    signForm(aForm *form);
         void    executeForm(aForm const &form);
     private:
         std::string          _name_; //check if it should be constant
-        int                 _grade_;
+        unsigned int                 _grade_;
 };
 
 std::ostream     &operator<<(std::ostream &os, Bureaucrat const &src);

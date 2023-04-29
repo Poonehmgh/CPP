@@ -1,12 +1,12 @@
 # include"../inc/PresidentialPardonForm.hpp"
 # include<fstream>
 
-PresidentialPardonForm::PresidentialPardonForm() : aForm("PresidentialPardonForm", 5, 25)
+PresidentialPardonForm::PresidentialPardonForm() : aForm("PresidentialPardonForm", 25, 5)
 {
     _target_ = "default target";
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : aForm("PresidentialPardonForm", 5, 25)
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : aForm("PresidentialPardonForm", 25, 5)
 {
     _target_ = target;
 }
@@ -16,9 +16,10 @@ PresidentialPardonForm::~PresidentialPardonForm()
     std::cout <<  YELLOW << getName() << RESET" is torn apart.\n";
 }
 
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm    const &src) : aForm(src) //check
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm    const &src) : aForm(src.getName(), src.getSignGrade(), src.getExecGrade()) 
 {
     *this = src;
+    std::cout << "PresidentialPardonForm copy constrcutor called.\n";
 }
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm const &src)

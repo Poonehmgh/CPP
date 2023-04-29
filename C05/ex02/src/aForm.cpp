@@ -8,14 +8,14 @@ aForm::aForm(): _name_("default"), _signed_(false), _signGrade_(1), _executeGrad
     std::cout << "Default Form is made\n";
 }
 
-aForm::aForm(aForm const &src)
+aForm::aForm(aForm const &src): _name_(src.getName()), _signed_(src._signed_), _signGrade_(src._signGrade_), _executeGrade_(src._executeGrade_)
 {
     *this = src;
+    std::cout << "aForm copy constructor called.\n";
 }
 
-aForm::aForm(std::string name, int exec, int sgnGrade): _name_(name)
+aForm::aForm(std::string name, int sgnGrade, int exec): _name_(name), _signed_(false), _signGrade_(sgnGrade), _executeGrade_(exec)
 {
-    _signed_ = false;
     try
     {
         if (exec > 150 || sgnGrade > 150)
@@ -24,8 +24,6 @@ aForm::aForm(std::string name, int exec, int sgnGrade): _name_(name)
             throw(aForm::GradeTooHighException());
         else
         {
-            _executeGrade_ = exec; 
-            _signGrade_ = sgnGrade;
             std::cout << "The Form " << YELLOW << getName() << RESET" with sign grade of " << getSignGrade() << " and execution grade of " << getExecGrade() << " is made. \n";
         }
     }
@@ -44,8 +42,7 @@ aForm    &aForm::operator=(aForm   const &src)
 {
     _name_ = src.getName();
     _signed_ = src.getSignBool();
-    _executeGrade_ = src.getExecGrade();
-    _signGrade_ = src.getSignGrade();
+    std::cout << "aForm copy assignment operator called.";
     return(*this);
 }
 
@@ -59,12 +56,12 @@ bool    aForm::getSignBool() const
     return(_signed_);
 }
 
-int aForm::getExecGrade() const
+unsigned int aForm::getExecGrade() const
 {
     return (_executeGrade_);
 }
 
-int aForm::getSignGrade() const
+unsigned int aForm::getSignGrade() const
 {
     return(_signGrade_);
 }
@@ -81,4 +78,9 @@ std::ostream    &operator<<(std::ostream &os, aForm const &src)
 {
     return (os << YELLOW << src.getName() << RESET": sign grade: " << src.getSignGrade() <<\
              " execution grade: " << src.getExecGrade() << " is signed?: " << src.getSignBool() << "\n");
+}
+
+void    aForm::setSignBool(bool s)
+{
+    _signed_ = s;
 }

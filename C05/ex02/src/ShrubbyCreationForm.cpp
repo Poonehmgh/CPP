@@ -1,22 +1,22 @@
 # include"../inc/ShrubbyCreationForm.hpp"
 # include<fstream>
 
-ShrubbyCreationForm::ShrubbyCreationForm() : aForm("ShrubbyCreateForm", 137, 145)
+ShrubbyCreationForm::ShrubbyCreationForm() : aForm("ShrubbyCreateForm", 145, 137)
 {
     _target_ = "default target";
 }
 
-ShrubbyCreationForm::ShrubbyCreationForm(std::string target) : aForm("ShrubbyCreateForm", 137, 145)
+ShrubbyCreationForm::ShrubbyCreationForm(std::string target) : aForm("ShrubbyCreateForm", 145, 137)
 {
     _target_ = target;
 }
 
 ShrubbyCreationForm::~ShrubbyCreationForm()
 {
-    std::cout << "ShrubbyCreat Form is torn apart.\n";
+    std::cout << "ShrubbyCreationForm is torn apart.\n";
 }
 
-ShrubbyCreationForm::ShrubbyCreationForm(ShrubbyCreationForm    const &src) : aForm(src) //check
+ShrubbyCreationForm::ShrubbyCreationForm(ShrubbyCreationForm    const &src) : aForm(src.getName(), 137, 145)
 {
     *this = src;
 }
@@ -24,6 +24,7 @@ ShrubbyCreationForm::ShrubbyCreationForm(ShrubbyCreationForm    const &src) : aF
 ShrubbyCreationForm &ShrubbyCreationForm::operator=(ShrubbyCreationForm const &src)
 {
     _target_ = src.getTarget();
+    setSignBool(src.getSignBool());
     return (*this);
 }
 
@@ -70,14 +71,14 @@ void ShrubbyCreationForm::execute(Bureaucrat  const &executor) const
 {
     try
     {
-        if (!this->getSignBool())
+        if(!this->getSignBool())
             throw(aForm::FormNotSignedException());
-        else if (executor.getGrade() > this->getExecGrade())
-            throw (aForm::GradeTooLowException());
+        else if(executor.getGrade() > this->getExecGrade())
+            throw(aForm::GradeTooLowException());
         else
             this->executeForm();
     }
-    catch(const std::exception& e)
+    catch(const std::exception &e)
     {
         std::cerr << "Exception thrown: " << e.what();
     }

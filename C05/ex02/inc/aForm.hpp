@@ -2,7 +2,7 @@
 # define AForm_H
 # include <iostream>
 # include <exception>
-#include "Bureaucrat.hpp"
+# include "Bureaucrat.hpp"
 # define  GREEN "\e[1;32m"
 # define YELLOW "\e[1;33m"
 # define MAGNETA "\033[1;35m"
@@ -42,15 +42,16 @@ class aForm
         aForm           &operator=(aForm const &src);
         std::string     getName() const;
         bool            getSignBool() const;
-        int             getSignGrade() const;
-        int             getExecGrade() const;
+        void            setSignBool(bool sign);
+        unsigned        getSignGrade() const;
+        unsigned        getExecGrade() const;
         void            beSigned(Bureaucrat *person);
         virtual void    execute(Bureaucrat const &executor) const = 0;
     private:
         std::string     _name_;
         bool            _signed_;
-        int             _signGrade_;
-        int             _executeGrade_;
+        const unsigned int             _signGrade_;
+        const unsigned int             _executeGrade_;
 };
 
 std::ostream    &operator<<(std::ostream &os, aForm const &src);
