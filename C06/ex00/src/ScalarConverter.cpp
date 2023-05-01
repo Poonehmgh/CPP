@@ -1,17 +1,13 @@
 # include "../inc/ScalarConverter.hpp"
-# include <string>
-# include <cctype>
-# include <limits.h>
 # include <iomanip>
 
 ScalarConverter::ScalarConverter():_string_("w/o input")
 {
-
 }
 
 ScalarConverter::ScalarConverter(std::string input) : _string_(input)
 {
-    std::cout << "Default ScalarConverter constructor is called.\n";
+    std::cout << "ScalarConverter constructor is called.\n";
     isValid_ = true;
 }
 
