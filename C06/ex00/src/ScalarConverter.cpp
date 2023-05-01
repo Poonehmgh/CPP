@@ -2,10 +2,17 @@
 # include <string>
 # include <cctype>
 # include <limits.h>
+# include <iomanip>
+
+ScalarConverter::ScalarConverter():_string_("w/o input")
+{
+
+}
 
 ScalarConverter::ScalarConverter(std::string input) : _string_(input)
 {
     std::cout << "Default ScalarConverter constructor is called.\n";
+    isValid_ = true;
 }
 
 ScalarConverter::~ScalarConverter()
@@ -21,6 +28,7 @@ ScalarConverter::ScalarConverter(ScalarConverter   const &src)
 ScalarConverter  &ScalarConverter::operator=(ScalarConverter   const &src)
 {
     _type_ = src.getType();
+    _string_ = src._string_;
     return(*this);
 }
 
@@ -29,7 +37,7 @@ int    ScalarConverter::findType(std::string s)
 {
     if (s.length() == 1 && !isdigit(s.at(0)))
         return (CHAR);
-    if (s == "+inff" || s == "+INFF" || s == "-inff" || s == "-INFF" || s == "nanf")
+    if (s == "+inff" || s == "+INFF" || s == "-inff" || s == "-INFF" || s == "nan" || s == "inff")
         return(PSEUDO);
     for(size_t i = 0; i < s.length(); i++)
     {
@@ -38,10 +46,14 @@ int    ScalarConverter::findType(std::string s)
     }
     if (s.find('.') != std::string::npos)
     {
+        if (s.find_first_of('.') != s.find_last_of('.') || s.find_first_of('f') != s.find_last_of('f'))
+            return (NON);
         if (s.find('f') != std::string::npos)
             return (FLOAT);
         return (DOUBLE);
     }
+    if (s.find('f') != std::string::npos)
+        return(NON);
     return (INT);
 }
 
@@ -50,21 +62,14 @@ void    ScalarConverter::convert()
 {
     setType(findType(_string_));
     long tmp = atol(_string_.c_str());
+    if (tmp > std::numeric_limits<int>::max() ||  tmp < std::numeric_limits<int>::min()) //this is to protect int_ from having big numbers
+        _type_ = FLOAT;
     switch (getType())
     {
         case 0:
-            if (tmp > std::numeric_limits<int>::max() ||  tmp < std::numeric_limits<int>::min())
-            {
-                int_ = std::numeric_limits<int>::min();
-                _type_ = FLOAT;
-                handle_int();
-            }
-            else
-            {
-                int_ = atoi(_string_.c_str());
-                handle_int();
-                break;
-            }
+            int_ = atoi(_string_.c_str());
+            handle_int();
+            break;
         case 1:
             float_ = atof(_string_.c_str());
             handle_float();
@@ -79,7 +84,10 @@ void    ScalarConverter::convert()
             break;
         case 4:
             handle_in();
-            break;  
+            break;
+        case 5:
+            std::cerr << RED"error! invalid string input.\n" << RESET;
+            return ;
     }
     std::cout << *this;
 }
@@ -96,12 +104,12 @@ int ScalarConverter::getType() const
 
 std::ostream     &operator<<(std::ostream &os,ScalarConverter const &src)
 {
-    // if (src.getType() == PSEUDO)
-    //     return (os << "")
     if (src.char_ > 32 && src.char_ < 127)
-        return (os << YELLOW"char: '" <<  src.char_ << "' "<< GREEN"int: " << src.float_ << BLUE" float: " << src.int_ << YELLOW" double: " << src.double_ << RESET"\n");
+        return (os << YELLOW"char: '" <<  src.char_ << "' "<< GREEN"\nint: " << src.int_ << BLUE"\nfloat: " << std::fixed << std::setprecision(1) << src.float_ <<"f" << YELLOW"\ndouble: " << std::fixed << std::setprecision(1) << src.double_ << RESET"\n");
+    else if (src.isValid_)
+        return (os << YELLOW"char: not displayable\n" << GREEN"int: " << src.int_ << BLUE"\nfloat: " << std::fixed << std::setprecision(1) << src.float_ << "f" <<YELLOW"\ndouble: "  << std::fixed << std::setprecision(1) << src.double_ << RESET"\n");
     else
-        return (os << YELLOW"char: not visible " << GREEN"int: " << src.int_ << BLUE" float: " << src.float_ << YELLOW" double: " << src.double_ << RESET"\n");      
+        return (os << YELLOW"char: impossible\n" << GREEN"int: " << "impossible" << BLUE"\nfloat: " << std::fixed << std::setprecision(1) << src.float_ << "f" << YELLOW"\ndouble: " << std::fixed << std::setprecision(1) << src.double_ << RESET"\n");        
 }
 
 void ScalarConverter::handle_int()
@@ -117,7 +125,7 @@ void ScalarConverter::handle_float()
     char_ = static_cast<char>(float_);
     if (float_ > INT_MAX || float_ < INT_MIN)
     {
-        std::cout << "Int not valid.\n";
+        isValid_ = false;
         int_ = INT_MIN;
         return ;
     }
@@ -130,7 +138,7 @@ void ScalarConverter::handle_double()
     char_ = static_cast<char>(double_);
     if (double_ > INT_MAX || double_ < INT_MIN)
     {
-        std::cout << "Int not valid.\n";
+        isValid_ = false;
         int_ = INT_MIN;
         return ;
     }
@@ -144,13 +152,11 @@ void ScalarConverter::handle_char()
     int_ = static_cast<int>(char_);
 }
 
-// void ScalarConverter::handle_in() // check infitiy and nan 
-// {
-//     if (_string_.at(0) == '-')
-//         float_ = std::numeric_limits<float>::infinity();
-//     else
-//         float_ = std::numeric_limits<float>::infinity();
-//     // float_ = static_cast<float>(atof(_string_.c_str()));
-//     double_ = static_cast<double>(float_);
-//     int_ = INT_MIN;
-// }
+void ScalarConverter::handle_in()
+{
+    float_ = static_cast<float>(atof(_string_.c_str()));
+    double_ = static_cast<double>(float_);
+    isValid_ = false;
+    int_ = INT_MIN; // this was the behavior of cpp itself, when trying to cast inf to int. but acc to subj, I will only print "impossible".
+    char_ = static_cast<char>(float_);
+}

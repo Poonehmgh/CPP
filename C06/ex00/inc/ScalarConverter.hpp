@@ -6,10 +6,12 @@
 # define YELLOW "\e[1;33m"
 # define  RESET "\e[0;37m"
 # define BLUE  "\033[36m"
+# define RED    "\033[0;31m"
 
 class ScalarConverter
 {
     public:
+        ScalarConverter();
         ScalarConverter(std::string input);
         virtual ~ScalarConverter();
         ScalarConverter(ScalarConverter   const &src);
@@ -23,6 +25,7 @@ class ScalarConverter
         float   float_;
         char    char_;
         double  double_;
+        bool     isValid_;
         void    handle_int();
         void    handle_float();
         void    handle_double();

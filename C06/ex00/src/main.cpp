@@ -1,31 +1,13 @@
 # include "../inc/ScalarConverter.hpp"
 # include <cmath>
-int main()
+int main(int argc, char **argv)
 {
-    ScalarConverter a("inff");
-    a.convert();
-    float f = std::numeric_limits<float>::infinity();
-    std::cout << "\n POONEH " << static_cast<double>(f) <<std::endl << static_cast<float>(f) << " " << static_cast<int>(f);
-    // a.convert("d");
-    // std::cout << a.getType() << std::endl;
-
-    // a.convert("hello");
-    // std::cout << a.getType() << std::endl;
-
-    // a.convert("7");
-    // std::cout << a.getType() << std::endl;
-
-
-    // a.convert("1.2");
-    // std::cout << a.getType() << std::endl;
-    // a.convert("55.6");
-    // std::cout << a.getType() << std::endl;
-    // a.convert("99999.99f");
-    // std::cout << a.getType() << std::endl;
-    //  a.convert(".f");
-    // std::cout << a.getType() << std::endl;
-    //  a.convert(".");
-    // std::cout << a.getType() << std::endl;
-    //  a.convert("1.4f+");
-    // std::cout << a.getType() << std::endl;
+    if (argc != 2)
+        return (std::cerr << RED"error! enter only one argument.\n" << RESET, 1);
+    std::string str(argv[1]);
+    ScalarConverter instance(str);
+    instance.convert();
+    // float a = 1099.0f;
+    // std::cout <<"\nanother check: " << static_cast<char>(a);
+    return (0);
 }

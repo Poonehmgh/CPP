@@ -1,4 +1,4 @@
-NAME = ScalarConverter
+NAME = convert
 SRC_DIR = src
 OBJ_DIR = obj
 SRC = $(SRC_DIR)/main.cpp $(SRC_DIR)/ScalarConverter.cpp
