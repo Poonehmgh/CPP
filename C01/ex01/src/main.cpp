@@ -1,18 +1,18 @@
 #include"../inc/Zombie.hpp"
 
-int main()
+int main(int argc, char **argv)
 {
-    std::string prompt;
-    std::string n;
-    int         num;
-    Zombie  *ZombiePointer;
+    Zombie		*Zombie_ptr;
 
-    std::cout<<"whats the name of zombies?\n";
-    getline(std::cin, prompt);
-    std::cout<<"and how many?\n";
-    getline(std::cin, n);
-    num = std::stoi(n);
-    ZombiePointer = zombieHorde(num, prompt);
-    delete[] ZombiePointer;
-    return (0);
+	if (argc == 3)
+	{
+		int			N = atoi(argv[1]);
+		std::string	name = argv[2];
+		Zombie_ptr = zombieHorde(N, name);
+		std::cout << "Created " << N << " Zombies.\n";
+		delete[] Zombie_ptr;
+	}
+    else
+        std::cout << "enter correct arguments: 1. number of zombies 2. zombie name.\n";
+	return (0);
 }

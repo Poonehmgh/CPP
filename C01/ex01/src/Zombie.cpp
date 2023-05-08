@@ -1,18 +1,25 @@
 #include"../inc/Zombie.hpp"
 
-
-void    Zombie::announce (void)
+Zombie::Zombie()
 {
-    std::cout<<this->name<<": BraiiiiiiinnnzzzZ...\n";
-}
+    std::cout << "Default constructor is called.\n";
+};
+Zombie::Zombie(std::string name): _name_(name)
+{} 
+
 
 Zombie::~Zombie()
 {
-    std::cout<<this->name<<": Byyyyyye\n";
+    std::cout<< _name_ <<": Byyyyyye\n";
 }
 
-void    Zombie::initialize(std::string str)
+void    Zombie::announce (void)
 {
-    name = str;
+    std::cout<< _name_ <<": BraiiiiiiinnnzzzZ...\n";
+}
+
+void    Zombie::setZombie(std::string str)
+{
+    _name_ = str;
     announce();
 }

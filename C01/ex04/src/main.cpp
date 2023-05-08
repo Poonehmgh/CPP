@@ -19,6 +19,7 @@ int main(int argc, char **argv)
     std::string s1 = argv[2];
     std::string s2 = argv[3];
     std::ifstream inputFile(file_name);
+    
     if (!inputFile.is_open())
         return (std::cerr<<"error in openning file.\n", 1);
 

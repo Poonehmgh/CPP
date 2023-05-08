@@ -5,12 +5,14 @@
 class harl
 {
     public:
-    void complain(std::string level);
+        harl();
+        ~harl();
+        void complain(std::string level);
     private:
-    void _debug();
-    void _info();
-    void _warning();
-    void _error();
+        void _debug();
+        void _info();
+        void _warning();
+        void _error();
 };
 
 #endif
