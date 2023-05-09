@@ -37,8 +37,6 @@ int main() {
 
 result:
 
-[p](/Users/pooneh/Desktop/AR.png "AR.png")
-
 ![[Pasted image 20230508143459.png]]
 ![[Pasted image 20230508143527.png]]
 
