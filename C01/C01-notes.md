@@ -3,7 +3,7 @@
 
 when a pointer to a class member is defined, you can only assign a value to it through a class instance.
 
-
+```
 #include <iostream>
 
 class MyClass {
@@ -35,7 +35,9 @@ int main() {
 
 ```
 
-result: 
+result:
+
+[p](/Users/pooneh/Desktop/AR.png "AR.png")
 
 ![[Pasted image 20230508143459.png]]
 ![[Pasted image 20230508143527.png]]
@@ -276,4 +278,6 @@ you need to declare with handle, because it can be any function if you don't pro
 
 #### ex06
 
-In `switch` if it is case 0 (I mean 0 is true) and we have no break, all of other cases would become valid. if we dont want switch to go from the point on, we have to break. so the exact value of X is equal to one of cases, from there on to end would be called. 
+In `switch` if it is case 0 (I mean 0 is true) and we have no break, all of other cases would become valid. if we 
+dont want switch to go from the point on, we have to break. so the exact value of X is equal to one of cases, from there on to 
+end would be called. 
