@@ -216,6 +216,20 @@ while ((pos = contents.find(s1, pos)) != std::string::npos) {
 
 "sed" is a Unix utility for parsing and transforming text files, and it is often used for advanced text editing and automation tasks. The phrase "Sed is for losers" is a reference to the notion that using "sed" to manipulate text is a less elegant solution than writing one's own code to perform the same task.
 
+##### dont forget to check the empty string case:
+
+if a user inters S1 = "" and S2 = "" as input then the program shouldn't loop. My evaluator checked for this case and mine was looping, so I just added this `S1 != "" ` condition. 
+
+```
+while (s1 != "" && (pos = contents.find(s1, pos)) != std::string::npos)
+
+{
+	ft_replace(&contents, s1, s2, pos);
+	pos += s2.length();
+}
+```
+
+
 #### ex05
 
 I really did not get this one first. but it is simpler than it looks. we literally have to print a message according to the input level. 
