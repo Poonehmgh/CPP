@@ -9,7 +9,7 @@ Fixed::~Fixed(){}
 
 Fixed::Fixed(const int a)
 {
-    _fixPoint_ = a << _numFracBits_;
+    setRawBits(a << _numFracBits_);
 }
 
 Fixed::Fixed(const float a)
@@ -35,17 +35,17 @@ int Fixed::getRawBits() const
 
 void Fixed::setRawBits(int raw)
 {
-    _fixPoint_ =  raw << _numFracBits_;;
+    _fixPoint_ =  raw;
 }
 
 float Fixed::toFloat(void) const
 {
-    return ((float)_fixPoint_ / pow(2, _numFracBits_));
+    return (((float)_fixPoint_) / (1 << _numFracBits_));
 }
 
 int Fixed::toInt(void) const
 {
-    return((int)_fixPoint_/ pow(2, _numFracBits_));
+    return(_fixPoint_ >> _numFracBits_);
 }
 
 /*****************************COMPARISON OPERATORS********************/
@@ -58,68 +58,59 @@ std::ostream &operator<<(std::ostream &ins, Fixed const &src)
 
 bool Fixed::operator>(Fixed const &src) const 
 {
-    if (src.getRawBits() < getRawBits())
-        return (true);
-    return (false);
+    return (src.getRawBits() < getRawBits());
 }
 
 bool Fixed::operator<(Fixed const &src) const
 {
-    if (src.getRawBits() > getRawBits())
-        return (true);
-    return (false);
+    return (src.getRawBits() > getRawBits());
 }
 
 bool Fixed::operator==(Fixed const &src) const 
 {
-    if (src.getRawBits() == getRawBits())
-        return (true);
-    return (false);
+    return (src.getRawBits() == getRawBits());
 }
 
 bool Fixed::operator!=(Fixed const &src) const
 {
-    if (src.getRawBits() != getRawBits())
-        return (true);
-    return (false);
+    return (src.getRawBits() != getRawBits());
 }
 
 bool Fixed::operator>=(Fixed const &src) const
 {
-    if (getRawBits() >= src.getRawBits())
-        return(true);
-    return(false);
+    return (getRawBits() >= src.getRawBits());
 }
 
 bool Fixed::operator<=(Fixed const &src) const
 {
-    if (getRawBits() <= src.getRawBits())
-        return(true);
-    return(false);
+    return (getRawBits() <= src.getRawBits());
 }
 /***********************ARITHMETIC OPERATORS********************************/
 
 Fixed   Fixed::operator+(Fixed const &src)
 {
-    Fixed tmp (this->toFloat() + src.toFloat());    
-    return (tmp);
+    Fixed result;
+    result.setRawBits((_fixPoint_ + src.getRawBits()));
+    return result;
 }
 
 Fixed   Fixed::operator-(Fixed const &src)
 {
-    Fixed tmp(this->toFloat() - src.toFloat());
+    Fixed tmp;
+    tmp.setRawBits(getRawBits() - src.getRawBits());
     return (tmp);
 }
 
 Fixed   Fixed::operator/(Fixed const &src)
 {
-    Fixed   tmp(this->toFloat() / src.toFloat());
+    Fixed   tmp(this->toFloat() / src.toFloat()); //not working without float.
     return (tmp);
 }
 
 Fixed   Fixed::operator*(Fixed const &src)
 {
-    Fixed tmp (this->toFloat() * src.toFloat());
+    Fixed tmp;
+    tmp.setRawBits(getRawBits() * src.getRawBits() >> _numFracBits_);
     return (tmp);
 }
 /********************************INCREMENT/DECREMENT OPERATORS************/

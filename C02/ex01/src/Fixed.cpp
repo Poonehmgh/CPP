@@ -3,36 +3,37 @@
 
 Fixed::Fixed()
 {
-    std::cout<<"Default constructor is called.\n";
+    std::cout << "Default constructor is called.\n";
+    _fixPoint_ = 0;
 }
 
 Fixed::~Fixed()
 {
-    std::cout<<"Destructor called.\n";
+    std::cout << "Destructor called.\n";
 }
 
 Fixed::Fixed(const int a)
 {
-    std::cout<<"Int constructor called.\n";
-    _fixPoint_ = a << _numFracBits_;
+    std::cout << "Int constructor called.\n";
+    setRawBits( a << _numFracBits_);
 }
 
 Fixed::Fixed(const float a)
 {
-    std::cout<<"Float constructor called.\n";
+    std::cout << "Float constructor called.\n";
     _fixPoint_ = roundf(a * (1 <<_numFracBits_)); //why do i round ?
 }
 
 Fixed &Fixed::operator=(Fixed const &src)
 {
-    std::cout<<"Copy assignment operator called.\n";
+    std::cout << "Copy assignment operator called.\n";
     _fixPoint_ = src.getRawBits();
     return *this;
 }
 
 Fixed::Fixed(Fixed const &src)
 {
-    std::cout<<"Copy constructor called.\n";
+    std::cout << "Copy constructor called.\n";
     *this = src;
 }
 
@@ -58,6 +59,6 @@ int Fixed::toInt(void) const
 
 std::ostream &operator<<(std::ostream &ins, Fixed const &src)
 {
-    ins<<src.toFloat(); //why do we print the float version on the operator << ? because we wanna see the reall value. if we wanted to see the fixed point value, we should have asked getraw to be printed.
+    ins << src.toFloat(); //why do we print the float version on the operator << ? because we wanna see the reall value. if we wanted to see the fixed point value, we should have asked getraw to be printed.
     return(ins);
 }

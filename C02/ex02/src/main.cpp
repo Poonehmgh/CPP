@@ -31,10 +31,8 @@ int main (void)
         std::cout << "4. this is working correctly.\n";
 
     /** test +-* / min max   **/
-    Fixed c;
-    c.setRawBits(2);
-    Fixed d;
-    d.setRawBits(3);
+    Fixed c(2);
+    Fixed d(3);
     std::cout << "5. answer of c + d should be 5: " << c + d << std::endl;
     std::cout << "6. answer of c - d should be -1: " << c - d << std::endl;
     std::cout << "7. answer of c / c should be 1: " << c / c << std::endl;

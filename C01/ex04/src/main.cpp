@@ -28,7 +28,7 @@ int main(int argc, char **argv)
     std::string contents = stringBuffer.str();
 
     size_t pos = 0;
-    while ((pos = contents.find(s1, pos)) != std::string::npos) 
+    while (s1 != "" && (pos = contents.find(s1, pos)) != std::string::npos) 
     {
         ft_replace(&contents, s1, s2, pos);
         pos += s2.length();
