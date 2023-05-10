@@ -6,12 +6,12 @@
 class Ice : public aMateria
 {
     public:
-    Ice();
-    ~Ice();
-    Ice(Ice const &src);
-    Ice &operator=(Ice const &src);
-    aMateria   *clone() const;
-    void use(iCharacter &target);
+        Ice();
+        ~Ice();
+        Ice(Ice const &src);
+        Ice &operator=(Ice const &src);
+        aMateria   *clone() const;
+        void use(iCharacter &target);
 };
 
 #endif

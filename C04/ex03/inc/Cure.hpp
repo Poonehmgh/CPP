@@ -6,12 +6,12 @@
 class Cure : public aMateria
 {
     public:
-    Cure();
-    ~Cure();
-    Cure(Cure const &src);
-    Cure &operator=(Cure const &src);
-    aMateria   *clone() const;
-    void    use(iCharacter &target);
+        Cure();
+        ~Cure();
+        Cure(Cure const &src);
+        Cure &operator=(Cure const &src);
+        aMateria   *clone() const;
+        void    use(iCharacter &target);
 };
 
 #endif
