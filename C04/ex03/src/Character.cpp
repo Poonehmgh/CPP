@@ -10,15 +10,18 @@ Character::~Character()
             _inventory_[i] = NULL;
         }
     }
+    //std::cout << "Character destructor called.\n";
 }
 
 Character::Character()
 {
+    //std::cout << "Character def constructor called.\n";
     setInventoryAll(NULL);
 }
 
 Character::Character(std::string name) : _name_(name)
 {
+    //std::cout << "Character constructor called.\n";
     setInventoryAll(NULL);
 }
 
@@ -27,6 +30,7 @@ Character::Character(Character &src)
     _name_ = src.getName();
     for (int i = 0; i < 4; i++)
         _inventory_[i] = src._inventory_[i]->clone(); 
+        //std::cout << "Character copy constructor called.\n";
 }
 
 Character &Character::operator=(Character &src)
@@ -38,6 +42,7 @@ Character &Character::operator=(Character &src)
             delete _inventory_[i];
         _inventory_[i] = src._inventory_[i]->clone();
     }
+    //std::cout << "Character copy operator called.\n";
     return (*this);
 }
 

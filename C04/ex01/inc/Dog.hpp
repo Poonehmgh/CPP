@@ -7,16 +7,16 @@
 class Dog: public Animal
 {
     public:
-    Dog();
-    Dog(std::string type);
-    ~Dog();
-    Dog(Dog const &src);
-    Dog &operator=(Dog const &src);
-    void makeSound() const;
-    void think(std::string idea);
-    void sayThoughts(int i);
+        Dog();
+        Dog(std::string type);
+        virtual ~Dog();
+        Dog(Dog const &src);
+        Dog &operator=(Dog const &src);
+        void makeSound() const;
+        void think(std::string idea);
+        void sayThoughts(int i);
     private:
-    Brain   *_myBrain_;
+        Brain   *_myBrain_;
 };
 
 #endif

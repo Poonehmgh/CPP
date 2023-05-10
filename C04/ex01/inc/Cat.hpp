@@ -7,16 +7,16 @@
 class Cat: public Animal
 {
     public:
-    Cat();
-    Cat(std::string type);
-    ~Cat();
-    Cat(Cat const &src);
-    Cat &operator=(Cat const &src);
-    void makeSound() const;
-    void think(std::string idea);
-    void sayThoughts(int i);
+        Cat();
+        Cat(std::string type);
+        virtual ~Cat();
+        Cat(Cat const &src);
+        Cat &operator=(Cat const &src);
+        void makeSound() const;
+        void think(std::string idea);
+        void sayThoughts(int i);
     private:
-    Brain   *_myBrain_;
+        Brain   *_myBrain_;
 };
 
 #endif

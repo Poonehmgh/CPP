@@ -9,15 +9,15 @@
 class aAnimal
 {
     public:
-    aAnimal();
-    virtual ~aAnimal();
-    aAnimal(aAnimal const &src);
-    aAnimal &operator=(aAnimal const &src);
-    void setType(std::string type);
-    std::string getType(void) const;
-    virtual void    makeSound() const = 0;
+        aAnimal();
+        virtual ~aAnimal();
+        aAnimal(aAnimal const &src);
+        aAnimal &operator=(aAnimal const &src);
+        void setType(std::string type);
+        std::string getType(void) const;
+        virtual void    makeSound() const = 0;
     protected:
-    std::string _type_;
+        std::string _type_;
 };
 
 #endif

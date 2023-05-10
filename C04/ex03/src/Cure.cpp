@@ -2,19 +2,23 @@
 
 Cure::Cure() : aMateria("cure")
 {
+    //std::cout << "Cure default constructor called.\n";
 }
 
 Cure::Cure(Cure const &src)
 {
+    //std::cout << "Cure copy constructor called.\n";
     _type_ = src.getType();
 }
 
 Cure::~Cure()
 {
+    //std::cout << "Cure  destructor called.\n";
 }
 
 Cure    &Cure::operator=(Cure const &src)
 {
+    //std::cout << "Cure copy operator called.\n";
     _type_ = src.getType();
     return(*this);
 }

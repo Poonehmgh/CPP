@@ -61,5 +61,6 @@ int main (void)
         WrongAnimal animal_three;
         animal_three = kitty;
         animal_three.makeSound(); //  WRONG ANIMAL'S NOISES as we expected, animal sound, not cat sound.
+        kitty.makeSound(); // WrongCat' sound is only outputed when using the WrongCat. because we have no polymorphism here.
     }
 }
