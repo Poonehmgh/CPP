@@ -14,10 +14,10 @@ int main (void)
     std::cout << "they have different attack damage powers:" << rick.getAttackDamage() << " and " << morty.getAttackDamage() <<" and "<< old_dude.getAttackDamage() << "\n";
     
     rick.attack("Old dude");
-    rick.attack_ft("Old dude");
-    rick.attack_st("Old dude");
+    rick.attack("Old dude");
+    rick.attack("Old dude");
     old_dude.takeDamage(rick.getAttackDamage());
-    morty.attack_st("Rick");
+    morty.attack("Rick");
     rick.takeDamage(morty.getAttackDamage());
     rick.guardGate();
     morty.guardGate();

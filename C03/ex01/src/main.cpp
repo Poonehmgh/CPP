@@ -6,10 +6,10 @@ int main (void)
 {
     ScavTrap    siri("Siri");
     ScavTrap    bixbi("Bixbi");
-    siri.attack_st("Bixbi");
+    siri.attack("Bixbi");
     bixbi.takeDamage(siri.getAttackDamage());
     bixbi.beRepaired(2);
     bixbi.setAttackDamage(5);
-    bixbi.attack_st(siri.getName());
+    bixbi.attack(siri.getName());
     siri.takeDamage(bixbi.getAttackDamage());
 }

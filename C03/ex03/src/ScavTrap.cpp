@@ -51,7 +51,7 @@ void    ScavTrap::guardGate()
 
 }
 
-void    ScavTrap::attack_st(std::string name)
+void    ScavTrap::attack(std::string name)
 {
     if (_hitPoints_ && _energyPoints_)
     {

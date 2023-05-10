@@ -42,7 +42,7 @@ FragTrap::FragTrap(std::string name)
 
 /*****************************************/
 
-void    FragTrap::attack_ft(std::string name)
+void    FragTrap::attack(std::string name)
 {
     if (_hitPoints_ && _energyPoints_)
     {

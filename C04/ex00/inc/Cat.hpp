@@ -6,12 +6,12 @@
 class Cat: public Animal
 {
     public:
-    Cat();
-    Cat(std::string type);
-    ~Cat();
-    Cat(Cat const &src);
-    Cat &operator=(Cat const &src);
-    void makeSound() const;
+        Cat();
+        Cat(std::string type);
+        ~Cat();
+        Cat(Cat const &src);
+        Cat &operator=(Cat const &src);
+        void makeSound() const;
 };
 
 #endif

@@ -25,7 +25,7 @@ Cat &Cat::operator=(Cat const &src)
 
 Cat::Cat(std::string type)
 {
-    this->setType(type); //this overwrites the "animal type" that was set bu animal default constructor. 
+    setType(type); //this overwrites the "animal type" that was set by animal default constructor. 
     std::cout << "Cat constructor is called.\n";
 }
 

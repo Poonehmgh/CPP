@@ -42,7 +42,7 @@ FragTrap::FragTrap(std::string name)
 
 /*****************************************/
 
-void    FragTrap::attack_ft(std::string name)
+void    FragTrap::attack(std::string name)
 {
     if (_hitPoints_ && _energyPoints_)
     {
@@ -57,4 +57,6 @@ void FragTrap::highFivesGuys(void)
 {
     if (_hitPoints_ && _energyPoints_)
         std::cout << "FragTrap \033[32m" << _name_ << "\033[0m says: high five guys!\n";
+    else
+        std::cout << "FragTrap has no energy to highfive!\n";
 }

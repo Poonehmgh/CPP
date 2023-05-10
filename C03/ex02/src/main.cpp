@@ -6,11 +6,11 @@ int main (void)
 {
     FragTrap    siri("Siri");
     FragTrap    bixbi("Bixbi");
-    siri.attack_ft("Bixbi");
+    siri.attack("Bixbi");
     bixbi.takeDamage(siri.getAttackDamage());
     bixbi.beRepaired(2);
     bixbi.setAttackDamage(5);
-    bixbi.attack_ft(siri.getName());
+    bixbi.attack(siri.getName());
     siri.takeDamage(bixbi.getAttackDamage());
     bixbi.highFivesGuys();
 }

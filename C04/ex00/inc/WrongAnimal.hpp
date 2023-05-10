@@ -8,15 +8,15 @@
 class WrongAnimal
 {
     public:
-    WrongAnimal();
-    virtual ~WrongAnimal();
-    WrongAnimal(WrongAnimal const &src);
-    WrongAnimal &operator=(WrongAnimal const &src);
-    void setType(std::string type);
-    std::string getType(void) const;
-    virtual void    makeSound() const;
+        WrongAnimal();
+        virtual ~WrongAnimal();
+        WrongAnimal(WrongAnimal const &src);
+        WrongAnimal &operator=(WrongAnimal const &src);
+        void setType(std::string type);
+        std::string getType(void) const;
+        void    makeSound() const;
     protected:
-    std::string _type_;
+        std::string _type_;
 };
 
 #endif

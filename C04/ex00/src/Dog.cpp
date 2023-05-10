@@ -7,7 +7,7 @@ Dog::Dog()
 
 Dog::Dog(std::string type)
 {
-    this->setType(type);
+    setType(type);
     std::cout << "Dog constructor called.\n";
 }
 
@@ -24,7 +24,7 @@ Dog::Dog(Dog const &src)
 
 Dog &Dog::operator=(Dog const &src)
 {
-    this->setType(src.getType());
+    setType(src.getType());
     std::cout << "Dog copy operator called.\n";
     return(*this);
 }

@@ -54,5 +54,5 @@ std::string DiamondTrap::getName(void) const
 
 void DiamondTrap::whoAmI(void)
 {
-    std::cout << " Hi! I'm \033[0;33m" << getName() << "\033[0m and my ancesterial name is \033[0;33m" << FragTrap::getName() <<"\033[0m\n";
+    std::cout << " Hi! I'm \033[0;33m" << getName() << "\033[0m and my ancesterial name is \033[0;33m" << ClapTrap::getName() <<"\033[0m\n";
 }
