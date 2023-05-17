@@ -40,29 +40,33 @@ std::string Intern::getTarget() const
 aForm   *Intern::makeForm(std::string name, std::string target)
 {
     std::string array[3] = {"ShrubbyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm"};
-    aForm   *form;
-    int     i;
+    aForm   *(Intern::*func_ptr[3])(std::string) = {&Intern::makeShrubberyForm, &Intern::makeRobotomyForm, &Intern::makePardonForm}; //the syntax
+    int     i = 0;
 
-    for (i = 0; i < 4; i++)
-        if (array[i] == name)
-            break;
-    switch (i)
+    while (i < 3)
     {
-    case 0:
-        form = new ShrubbyCreationForm(target);
-        break;
-    case 1:
-        form = new RobotomyRequestForm(target);
-        break;
-    case 2:
-        form = new PresidentialPardonForm(target);
-        break;
-    // default:
-    //     std::cout << "Invalid form name\n";
-    //     form = NULL;
-    //     break;
+        if (array[i] == name)
+        {
+            std::cout << GREEN"Intern creates " << name << RESET".\n";
+            return ((this->*func_ptr[i])(target));
+        }
+        i++;
     }
-    if (form)
-        std::cout << "Intern creates " << form->getName() << "\n";
-    return (form);
+    std::cout << YELLOW"Invalid form name " << RESET"\n";
+    return (NULL);
+}
+
+aForm   *Intern::makeShrubberyForm(std::string target)
+{
+    return (new ShrubbyCreationForm(target));
+}
+
+aForm   *Intern::makeRobotomyForm(std::string target)
+{
+    return (new RobotomyRequestForm(target));
+}
+
+aForm   *Intern::makePardonForm(std::string target)
+{
+    return (new PresidentialPardonForm(target));
 }

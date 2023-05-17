@@ -15,21 +15,21 @@ class aForm
 {
     public:
         aForm();
-        aForm(std::string name, int execGrade, int signGrade);
+        aForm(std::string name, int signGrade, int execGrade);
         aForm(aForm const &src);
         virtual ~aForm();
         class GradeTooHighException: public std::exception
         {
             virtual const char *what() const throw()
             {
-                return("the grade is too high. max grade: 1\n");
+                return("the grade is too high.\n");
             }
         };
         class GradeTooLowException: public std::exception
         {
             virtual const char *what() const throw()
             {
-                return ("the grade is too low. min grade: 150\n");
+                return ("the grade is too low.\n");
             }
         };
         class FormNotSignedException: public std::exception
@@ -48,10 +48,10 @@ class aForm
         void            beSigned(Bureaucrat *person);
         virtual void    execute(Bureaucrat const &executor) const = 0;
     private:
-        std::string     _name_;
-        bool            _signed_;
-        const unsigned int             _signGrade_;
-        const unsigned int             _executeGrade_;
+        const std::string               _name_;
+        bool                            _signed_;
+        const unsigned int              _signGrade_;
+        const unsigned int              _executeGrade_;
 };
 
 std::ostream    &operator<<(std::ostream &os, aForm const &src);

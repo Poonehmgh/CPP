@@ -26,11 +26,12 @@ class Bureaucrat
             }
         };
         std::string getName() const;
-        int getGrade() const;
-        void    incrementGrade();
-        void    decrementGrade();
+        int         getGrade() const;
+        void        incrementGrade();
+        void        decrementGrade();
+        void        setName(std::string name);
     private:
-        std::string          _name_; //check if it should be constant
+        const std::string          _name_; //check if it should be constant
         int                 _grade_;
 };
 

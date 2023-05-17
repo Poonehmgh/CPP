@@ -21,14 +21,14 @@ Bureaucrat::Bureaucrat(std::string name, int grade): _name_(name)
         else
         {
             _grade_ = grade;
-            std::cout << "Bureaucrat " << GREEN << getName() << RESET <<" with grade " << getGrade() << " is here.\n";
+            std::cout << "Bureaucrat " << GREEN << _name_ << RESET <<" with grade " << _grade_ << " is here.\n";
         }
 
     } catch (const std::exception &e)
     {
         std::cerr << YELLOW"Exception thrown: " << RESET<< e.what();
         _grade_ = 150;
-        std::cout << "Bureaucrat " << GREEN << getName() << RESET" with grade " << getGrade() << " is made.\n";
+        std::cout << "Bureaucrat " << GREEN << _name_ << RESET" with grade " << _grade_ << " is made.\n";
     }
 }
 

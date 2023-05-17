@@ -15,7 +15,7 @@ class aForm
 {
     public:
         aForm();
-        aForm(std::string name, int execGrade, int signGrade);
+        aForm(std::string name, int signGrade, int execGrade);
         aForm(aForm const &src);
         virtual ~aForm();
         class GradeTooHighException: public std::exception

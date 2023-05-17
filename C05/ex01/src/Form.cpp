@@ -9,14 +9,12 @@ Form::Form(): _name_("default"), _signed_(false), _signGrade_(1), _executeGrade_
     std::cout << "Default form is made\n";
 }
 
-Form::Form(Form const &src)
+Form::Form(Form const &src): _name_(src.getName()), _signed_(false), _signGrade_(src.getSignGrade()), _executeGrade_(src.getExecGrade())
 {
-    *this = src;
 }
 
-Form::Form(std::string name, int exec, int sgnGrade): _name_(name)
+Form::Form(std::string name, int exec, int sgnGrade): _name_(name), _signed_(false), _signGrade_(sgnGrade), _executeGrade_(exec)
 {
-    _signed_ = false;
     try
     {
         if (exec > 150 || sgnGrade > 150)
@@ -25,9 +23,7 @@ Form::Form(std::string name, int exec, int sgnGrade): _name_(name)
             throw(Form::GradeTooHighException());
         else
         {
-            _executeGrade_ = exec; 
-            _signGrade_ = sgnGrade;
-            std::cout << "The form " << YELLOW << getName() << RESET" with sign grade of " << getSignGrade() << " and execution grade of " << getExecGrade() << "is made. \n";
+            std::cout << "The form " << YELLOW << getName() << RESET" with sign grade of " << getSignGrade() << " and execution grade of " << getExecGrade() << " is made. \n";
         }
     }
     catch(const std::exception &e)
@@ -41,12 +37,9 @@ Form::~Form()
     std::cout << "The form " << YELLOW << getName() << RESET << " is torn apart.\n";
 }
 
-Form    &Form::operator=(Form   const &src)
+Form    &Form::operator=(Form   const &src) //this wont call the copy constructor in any way.
 {
-    _name_ = src.getName();
-    _signed_ = src.getSignBool();
-    _executeGrade_ = src.getExecGrade();
-    _signGrade_ = src.getSignGrade();
+    _signed_ = src.getSignBool(); //only this is copied. 
     return(*this);
 }
 

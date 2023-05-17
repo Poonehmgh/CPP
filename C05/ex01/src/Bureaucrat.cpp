@@ -2,10 +2,9 @@
 # define  GREEN "\e[1;32m"
 # define YELLOW "\e[1;33m"
 # define  RESET "\e[0;37m"
-Bureaucrat::Bureaucrat()
+Bureaucrat::Bureaucrat(): _name_("default")
 {
     std::cout << "Default Bureaucrat is here.\n";
-    _name_ = "default";
     _grade_ = 150;
 }
 
@@ -36,14 +35,14 @@ Bureaucrat::~Bureaucrat()
     std::cout << "Bureacurat " << GREEN << _name_ << RESET" left the office.\n";
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat   const &src)
+Bureaucrat::Bureaucrat(Bureaucrat   const &src): _name_(src.getName())
 {
-    *this = src;
+    _grade_ = src.getGrade(); //should I copy element by elemet like this, or should I do this as *this = src? I think this will envoke 
+    // copy assignment operator. 
 }
 
 Bureaucrat  &Bureaucrat::operator=(Bureaucrat   const &src)
 {
-    _name_ = src.getName(); 
     _grade_ = src.getGrade();
     return(*this);
 }

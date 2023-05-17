@@ -1,6 +1,4 @@
 # include "../inc/aForm.hpp"
-
-
 #include"../inc/Bureaucrat.hpp"
 
 aForm::aForm(): _name_("default"), _signed_(false), _signGrade_(1), _executeGrade_(1)
@@ -10,7 +8,6 @@ aForm::aForm(): _name_("default"), _signed_(false), _signGrade_(1), _executeGrad
 
 aForm::aForm(aForm const &src): _name_(src.getName()), _signed_(src._signed_), _signGrade_(src._signGrade_), _executeGrade_(src._executeGrade_)
 {
-    *this = src;
     std::cout << "aForm copy constructor called.\n";
 }
 
@@ -40,7 +37,6 @@ aForm::~aForm()
 
 aForm    &aForm::operator=(aForm   const &src)
 {
-    _name_ = src.getName();
     _signed_ = src.getSignBool();
     std::cout << "aForm copy assignment operator called.";
     return(*this);

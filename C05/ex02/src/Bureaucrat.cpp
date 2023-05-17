@@ -3,11 +3,9 @@
 # define YELLOW "\e[1;33m"
 # define MAGNETA "\033[1;35m"
 # define  RESET "\e[0;37m"
-Bureaucrat::Bureaucrat()
+Bureaucrat::Bureaucrat() : _name_("default"), _grade_(150)
 {
     std::cout << "Default Bureaucrat is here.\n";
-    _name_ = "default";
-    _grade_ = 150;
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade): _name_(name)
@@ -37,14 +35,13 @@ Bureaucrat::~Bureaucrat()
     std::cout << "Bureacurat " << GREEN << _name_ << RESET" left the office.\n";
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat   const &src)
+Bureaucrat::Bureaucrat(Bureaucrat   const &src) : _name_(src.getName()), _grade_(src.getGrade())
 {
-    *this = src;
+    std::cout << "Bureaucrat copy constructor is called.\n";
 }
 
 Bureaucrat  &Bureaucrat::operator=(Bureaucrat   const &src)
 {
-    _name_ = src.getName(); 
     _grade_ = src.getGrade();
     return(*this);
 }

@@ -17,9 +17,8 @@ RobotomyRequestForm::~RobotomyRequestForm()
     std::cout << YELLOW << getName() << RESET" is torn apart.\n";
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm    const &src) : aForm(src) //check
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm    const &src): aForm(src.getName(), src.getSignGrade(), src.getExecGrade()) 
 {
-    *this = src;
 }
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const &src)

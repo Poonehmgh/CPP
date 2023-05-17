@@ -33,8 +33,8 @@ class Bureaucrat
         void    signForm(aForm *form);
         void    executeForm(aForm const &form);
     private:
-        std::string          _name_; //check if it should be constant
-        unsigned int                 _grade_;
+        const std::string           _name_;
+        unsigned int                _grade_;
 };
 
 std::ostream     &operator<<(std::ostream &os, Bureaucrat const &src);

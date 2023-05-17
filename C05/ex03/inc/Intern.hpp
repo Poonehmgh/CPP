@@ -10,10 +10,13 @@ class Intern
         Intern();
         Intern(Intern const &src);
         ~Intern();
-        Intern &operator=(Intern  const &src);
+        Intern      &operator=(Intern  const &src);
         std::string getTarget() const;
         std::string getFormName() const;
-        aForm   *makeForm(std::string name, std::string target);
+        aForm       *makeForm(std::string name, std::string target);
+        aForm       *makeShrubberyForm(std::string target);
+        aForm       *makeRobotomyForm(std::string target);
+        aForm       *makePardonForm(std::string target);
     private:
         std::string _target_;
         std::string _name_;

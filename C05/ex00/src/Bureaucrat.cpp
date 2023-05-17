@@ -2,10 +2,9 @@
 # define  GREEN "\e[1;32m"
 # define YELLOW "\e[1;33m"
 # define  RESET "\e[0;37m"
-Bureaucrat::Bureaucrat()
+Bureaucrat::Bureaucrat(): _name_("default")
 {
     std::cout << "Default Bureaucrat is made.\n";
-    _name_ = "default";
     _grade_ = 150;
 }
 
@@ -36,14 +35,13 @@ Bureaucrat::~Bureaucrat()
     std::cout << "Bureacurat " << GREEN << _name_ << RESET" destroyed.\n";
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat   const &src)
+Bureaucrat::Bureaucrat(Bureaucrat   const &src): _name_(src.getName())
 {
     *this = src;
 }
 
 Bureaucrat  &Bureaucrat::operator=(Bureaucrat   const &src)
 {
-    _name_ = src.getName(); 
     _grade_ = src.getGrade();
     return(*this);
 }

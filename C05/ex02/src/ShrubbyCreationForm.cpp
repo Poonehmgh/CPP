@@ -16,9 +16,8 @@ ShrubbyCreationForm::~ShrubbyCreationForm()
     std::cout << "ShrubbyCreationForm is torn apart.\n";
 }
 
-ShrubbyCreationForm::ShrubbyCreationForm(ShrubbyCreationForm    const &src) : aForm(src.getName(), 137, 145)
+ShrubbyCreationForm::ShrubbyCreationForm(ShrubbyCreationForm    const &src) : aForm(src.getName(), src.getSignGrade(), src.getExecGrade())
 {
-    *this = src;
 }
 
 ShrubbyCreationForm &ShrubbyCreationForm::operator=(ShrubbyCreationForm const &src)

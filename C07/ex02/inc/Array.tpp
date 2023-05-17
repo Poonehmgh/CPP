@@ -34,5 +34,4 @@ class Array
         T               *_element_;
         unsigned int    _l_;
 
-
 };

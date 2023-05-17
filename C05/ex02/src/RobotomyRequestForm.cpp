@@ -17,9 +17,8 @@ RobotomyRequestForm::~RobotomyRequestForm()
     std::cout << YELLOW << getName() << RESET" is torn apart.\n";
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm    const &src) : aForm(src) //check
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm    const &src) : aForm(src.getName(), src.getSignGrade(), src.getExecGrade())
 {
-    *this = src;
 }
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const &src)
@@ -31,7 +30,7 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const &s
 void    RobotomyRequestForm::executeForm(void) const
 {
     std::cout << "**** LOUD NOISE ****\n";
-    std::cout << MAGNETA << getTarget() << RESET "has been robotomized.\n";
+    std::cout << MAGNETA << getTarget() << RESET " has been robotomized.\n";
 }
 
 std::string RobotomyRequestForm::getTarget() const
@@ -41,13 +40,14 @@ std::string RobotomyRequestForm::getTarget() const
 
 void RobotomyRequestForm::execute(Bureaucrat  const &executor) const
 {
+    time_t t;
     try
     {
         if (!this->getSignBool())
             throw(aForm::FormNotSignedException());
         else if (executor.getGrade() > this->getExecGrade())
             throw (aForm::GradeTooLowException());
-        else if (rand() % 2)
+        else if (time(&t) % 2)
             throw(RobotomyRequestForm::BadLuck());
         else
         {
@@ -55,7 +55,7 @@ void RobotomyRequestForm::execute(Bureaucrat  const &executor) const
             std::cout << "Bureaucrat " << GREEN << executor.getGrade() << RESET" executed " << YELLOW << getName() << RESET"\n";
         }
     }
-    catch(const std::exception& e)
+    catch(const std::exception &e)
     {
         std::cerr << MAGNETA"Exception thrown: " << e.what() << "Robotomy faild.\n" << RESET;
     }

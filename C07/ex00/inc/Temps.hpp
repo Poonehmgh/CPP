@@ -16,7 +16,7 @@ void    swap(T &a, T &b)
     b = tmp;
 }
 
-template<typename T>
+template<typename T> //const to be added
 T   min(T a, T b)
 {
     if (a >= b)

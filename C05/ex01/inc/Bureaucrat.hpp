@@ -32,8 +32,8 @@ class Bureaucrat
         void    decrementGrade();
         void    signForm(Form *form);
     private:
-        std::string          _name_; //check if it should be constant
-        int                 _grade_;
+        const std::string           _name_;
+        int                         _grade_;
 };
 
 std::ostream     &operator<<(std::ostream &os, Bureaucrat const &src);
