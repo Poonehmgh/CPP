@@ -1,5 +1,5 @@
 # include "../inc/Serializer.hpp"
-# include <cmath>
+
 int main()
 {
     Data    sample;
