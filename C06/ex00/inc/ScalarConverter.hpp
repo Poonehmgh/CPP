@@ -11,29 +11,12 @@
 class ScalarConverter
 {
     public:
-        ScalarConverter();
-        ScalarConverter(std::string input);
-        virtual ~ScalarConverter();
-        ScalarConverter(ScalarConverter   const &src);
-        ScalarConverter   &operator=(ScalarConverter   const &src);
-        void    convert();
-        int     findType(std::string s);
-        void    setType(int a);
-        int     getType() const;
-        void    toInt();
-        int     int_;
-        float   float_;
-        char    char_;
-        double  double_;
-        bool     isValid_;
-        void    handle_int();
-        void    handle_float();
-        void    handle_double();
-        void    handle_char();
-        void    handle_in();
+        static void    convert(std::string const &str);
     private:
-        int     _type_;
-        std::string _string_;
+        ScalarConverter   &operator=(ScalarConverter   const &src);
+        ScalarConverter();
+        ~ScalarConverter();
+        ScalarConverter(ScalarConverter   const &src);
 };
 
 enum type
