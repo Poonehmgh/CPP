@@ -19,11 +19,11 @@ Serializer::Serializer(Serializer   const &src)
     *this = src;
 }
 
-Serializer  &Serializer::operator=(Serializer   const &src) // to search on this...
+Serializer  &Serializer::operator=(Serializer   const &src)
 {
-    (void)src;
-    
-    return(*this);
+    std::cout << "Serializer copy assignment is called.\n"; 
+    (void)src;   
+    return (*this);
 }
 
 uintptr_t Serializer::serialize(Data *ptr)

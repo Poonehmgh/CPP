@@ -10,6 +10,6 @@ int main()
     Data *sample2 = Serializer::deserialize(tmp);
     std::cout << "Original pointer:\n" << YELLOW <<&sample;
     std::cout << RESET"\nAfter serializition:\n" << YELLOW <<sample2;
-    std::cout << RESET"\the content:  " << sample2->random << "  " << sample2->random_str;
+    std::cout << RESET"\nthe content:  " << sample2->random << "  " << sample2->random_str;
     return (0);
 }

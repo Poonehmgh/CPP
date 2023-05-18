@@ -7,10 +7,9 @@ Base::~Base()
 
 Base *generate(void)
 {
-    std::srand(std::time(0));
-    int i = std::rand();
+    time_t t;
     Base *ptr;
-    switch(i % 3)
+    switch(time(&t) % 3)
     {
         case 0:
             ptr = new A;
@@ -34,11 +33,11 @@ void identify(Base *p)
     B   *Bptr = dynamic_cast<B *>(p);
     C   *Cptr = dynamic_cast<C *>(p);
     if (Aptr)
-        std::cout << Aptr << YELLOW"\nType: A\n" << RESET;
+        std::cout << Aptr << YELLOW"\nType was: A\n" << RESET;
     else if (Bptr)
-        std::cout << Bptr << YELLOW"\nType: B\n" << RESET;
+        std::cout << Bptr << YELLOW"\nType was: B\n" << RESET;
     else if (Cptr)
-        std::cout << Cptr << YELLOW"\nType: C\n" << RESET;
+        std::cout << Cptr << YELLOW"\nType was: C\n" << RESET;
     else
         std::cout << RED"cast unsuccessfull\n" << RESET;
 }
@@ -48,21 +47,21 @@ void identify(Base &p)
     try
     {
         A   &Aptr = dynamic_cast<A &>(p);
-        std::cout << &Aptr << YELLOW"\nType: A\n" << RESET;
+        std::cout << &Aptr << YELLOW"\nType was: A\n" << RESET;
     }
     catch(std::exception &e)
     {
         try
         {
              B   &Bptr = dynamic_cast<B &>(p);
-             std::cout << &Bptr << YELLOW"\nType: B\n" << RESET;
+             std::cout << &Bptr << YELLOW"\nType was: B\n" << RESET;
         }
         catch(std::exception &e)
         {
             try
             {
                  C   &Cptr = dynamic_cast<C &>(p);
-                 std::cout << &Cptr << YELLOW"\nType: C\n" << RESET;
+                 std::cout << &Cptr << YELLOW"\nType was: C\n" << RESET;
             }
             catch(const std::exception& e)
             {
