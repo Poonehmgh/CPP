@@ -28,7 +28,6 @@ enum type
     PSEUDO,
     NON,
 };
-std::ostream     &operator<<(std::ostream &os, ScalarConverter const &src);
 
 
 #endif
