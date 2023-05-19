@@ -62,8 +62,6 @@ Array<T> &Array<T>::operator=(Array    const &src)
 {
     if (this == &src)
         return (*this);
-    // if (_l_ == 0)
-    //         throw(IndexInvalid()); //chk
     if (_element_)
     {
         delete[] _element_;
