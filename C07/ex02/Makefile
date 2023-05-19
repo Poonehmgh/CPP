@@ -3,7 +3,8 @@ SRC_DIR = src
 OBJ_DIR = obj
 SRC = $(SRC_DIR)/main.cpp
 OBJ = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC))
-FLAGS = -Wall -Werror -Wextra -std=c++98 -g -fsanitize=address
+FLAGS = -Wall -Werror -Wextra -std=c++98 -g -pedantic
+#-fsanitize=address
 GPP = g++
 RM = rm -f
 COLOR = \033[36m

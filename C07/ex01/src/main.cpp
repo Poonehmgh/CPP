@@ -1,4 +1,6 @@
 # include "../inc/Iter.hpp"
+
+/*      test from eval sheet    */
 // class Awesome
 // {
 //   public:
@@ -14,7 +16,7 @@
 // void print( T const & x ) { std::cout << x << std::endl; return; }
 
 // int main() {
-//   int tab[] = { 0, 1, 2, 3, 4 };  // <--- I never understood why you can't write int[] tab. Wouldn't that make more sense?
+//   int tab[] = { 0, 1, 2, 3, 4 };
 //   Awesome tab2[5];
 
 //   iter( tab, 5, print<int> );
@@ -24,12 +26,12 @@
 // }
 
 
-int main( void ) // the function input in the eval should be const &T
+int main( void )
 {
     std::string array1[3] = {"hello", "world!", ":)\n"};
-    iter<std::string, 3, &print<std::string> >(array1, 3);
+    iter(array1, 3, print_);
     float array2[5] = {1.2f, 3.3333f, 0.0007f, 78, .2f};
-    iter<float, 5, &print<> >(array2, 5);
+    iter(array2, 5, print_<float>); //function pointer can be passed both as explicitly saying the input type and the implicit form.
     std::cout << "\n";
     return 0;
 }
