@@ -16,8 +16,8 @@ void    swap(T &a, T &b)
     b = tmp;
 }
 
-template<typename T> //const to be added
-T   min(T a, T b)
+template<typename T>
+T   min(T const a, T const b)
 {
     if (a >= b)
         return (b);
@@ -25,7 +25,7 @@ T   min(T a, T b)
 }
 
 template<typename T>
-T max(T a, T b)
+T max(T const a, T const b)
 {
     if (a > b)
         return (a);
