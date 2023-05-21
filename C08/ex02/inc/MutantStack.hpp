@@ -1,6 +1,6 @@
 #ifndef MutantStack_H
 #define MutantStack_H
-#include<iostream>
+#include <iostream>
 # define  GREEN "\x1B[1;32m"
 # define YELLOW "\x1B[1;33m"
 # define  RESET "\x1B[0;37m"

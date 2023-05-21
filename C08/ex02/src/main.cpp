@@ -26,7 +26,7 @@ int main( void )
         }
         std::stack<int> s(mstack);
     }
-     {
+    {
         /*          test from subject but with list, they should give us same output. 
                     (some stack specific functions commented out in the prev example) */
         std::list<int> mlist;
@@ -63,5 +63,4 @@ int main( void )
         std::cout << GREEN << *ri << RESET << std::endl;
     ri = a.rbegin(); // it is the last element
     std::cout << YELLOW << *ri << RESET << std::endl;    
-
 }

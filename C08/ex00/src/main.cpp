@@ -20,18 +20,35 @@ int main( void )
         std::cerr << RED"Excption thrown: " << e.what() << RESET << std::endl;
     }
 
-    // /*********  test 3 different containers     ********/
+    /*********  test 2 more different containers     ********/
 
-    // /*  defining containers with 50 elements    */
-    // std::vector<int> intVec(50);
-    // std::list<int> intList(50);
-    // std::deque<int> intDeque(50);
+    /*  defining containers    */
+    std::list<int> intList;
+    std::deque<int> intDeque;
 
-    // /*  filling the containers with random numbers  */
-    // std::generate(intVec.begin(), intVec.end(), std::rand() % 50);
-    // std::generate(intList.begin(), intList.end(), std::rand() % 50);
+    /*  filling the containers with random numbers  */
+    for (int i = 0; i < 50; i++)
+    {
+        intList.push_back(std::rand() % 50);
+        intDeque.push_back(std::rand() % 50);
+    }
+    // std::generate(intList.begin(), intList.end(), std::rand() % 50); // donno why didnt work
     // std::generate(intDeque.begin(), intDeque.end(), std::rand() % 50);
+    
+    /*      exception on list       */
+    try {
+        std::cout << "--------easy find on a list of ints container. with iterators-------\n";
+        for (std::list<int>::iterator i = intList.begin(); i != intList.end(); i++)
+            std::cout << GREEN << *i << *easyFind(intList, *i) <<RESET << std::endl;
 
+        std::cout << "--------easy find on a deque of ints container. with numbers. it stops when some number is not found.-------\n";
+        for (int i = 1; i < 50; i++)
+            std::cout << YELLOW << *easyFind(intDeque, i) << RESET << std::endl;
+        std::cout << "no such value: " << *easyFind(intList, 200) << std::endl;
+    } catch (std::exception &e)
+    {
+        std::cerr << RED"Excption thrown: " << e.what() << RESET << std::endl;
+    }
 
 
 
