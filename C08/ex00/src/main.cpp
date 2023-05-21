@@ -49,8 +49,4 @@ int main( void )
     {
         std::cerr << RED"Excption thrown: " << e.what() << RESET << std::endl;
     }
-
-
-
-
 }
