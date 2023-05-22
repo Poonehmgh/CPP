@@ -49,6 +49,8 @@ int     Span::random_num()
 
 void    Span::fillRandomNumber() // fills the whole vector with ranodm numbers.
 {
+     if (_vec_.empty())
+        throw(EmptyContainer());
     if (_vec_.size() > _size_)
         throw(ExceedSize());
     std::generate(_vec_.begin(), _vec_.end(), Span::random_num);

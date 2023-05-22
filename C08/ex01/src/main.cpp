@@ -45,6 +45,7 @@ int main( void )
     // try
     // {
     //     y.addNumber(10);
+    //     // y.fillRandomNumber();
     // }
     // catch(const std::exception& e)
     // {
