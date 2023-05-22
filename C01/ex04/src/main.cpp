@@ -13,7 +13,7 @@ int main(int argc, char **argv)
     if (argc != 4 )
     {
         std::cerr<<"error! bad input. enter <filename> <string 1> and <string 2>\n";
-        return (1); // what is the convention? 
+        return (1);
     }
     std::string file_name = argv[1];
     std::string s1 = argv[2];
