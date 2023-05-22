@@ -6,15 +6,17 @@ int main( void )
 {
     /*  simple tests    */
     Span x(5);
+    x.print_vector();
     x.addNumber(10);
     x.addNumber(20);
     x.addNumber(30);
     x.addNumber(11);
     x.addNumber(100);
+    x.print_vector();
     std::cout << GREEN"shortest: " << x.shortestSpan() << RESET << std::endl;
     std::cout << YELLOW"longest span: " << x.longestSpan() << RESET << std::endl;
 
-    /*    exceptions    */
+    // /*    exceptions    */
     try
     {
         x.addNumber(200);
@@ -24,11 +26,11 @@ int main( void )
         std::cerr << RED"Exception thrown: " << e.what() << RESET"\n";
     }
     /*      big vector  */
-    Span big(10000);
-    for (int i = 0; i < 10000; i++)
-        big.addNumber(rand() % 10000);
-    std::cout << GREEN"shortest: " << big.shortestSpan() << RESET"\n";
-    std::cout <<  YELLOW"longest: "<< big.longestSpan() << RESET"\n";
+    // Span big(10000);
+    // big.fillRandomNumber();
+    // big.print_vector();
+    // std::cout << GREEN"shortest: " << big.shortestSpan() << RESET"\n";
+    // std::cout <<  YELLOW"longest: "<< big.longestSpan() << RESET"\n";
     // /*      subj test      */
     // Span sp = Span(5);
     // sp.addNumber(6);

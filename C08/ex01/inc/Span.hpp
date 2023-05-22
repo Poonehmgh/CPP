@@ -20,6 +20,7 @@ class Span
         Span(Span const &src);
         Span    &operator=(Span const &src);
         void    addNumber(int n);
+        void    fillRandomNumber();
         int     shortestSpan();
         int     longestSpan();
         class EmptyContainer: public std::exception
@@ -36,9 +37,12 @@ class Span
                 return("It is exceeding the max number of elements acceptable.");
             }
         };
+        static  int random_num();
+        void print_vector();
     private:
         std::vector<int>    _vec_;
         unsigned int        _size_;
+        unsigned int                 _index_;
 };
 
 
