@@ -40,4 +40,14 @@ int main( void )
     // sp.addNumber(11);
     // std::cout << sp.shortestSpan() << std::endl;
     // std::cout << sp.longestSpan() << std::endl;
+    /*      test for empty container    */
+    // Span y;
+    // try
+    // {
+    //     y.addNumber(10);
+    // }
+    // catch(const std::exception& e)
+    // {
+    //     std::cerr << RED"Exception thrown: " << e.what() << RESET"\n";
+    // }  
 }

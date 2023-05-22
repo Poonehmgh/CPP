@@ -31,6 +31,8 @@ Span    &Span::operator=(Span const &src)
 
 void    Span::addNumber(int N)
 {
+    if (_vec_.empty())
+        throw(EmptyContainer());
     if (_index_ < _size_)
     {
         _vec_.at(_index_) = N;
