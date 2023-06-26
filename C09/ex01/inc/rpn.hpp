@@ -33,4 +33,6 @@ class OnlyDigits: public std::exception
     }
 };
 
+int calculator(char **argv);
+
 #endif
