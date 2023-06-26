@@ -8,8 +8,31 @@
 # define RED    "\033[0;31m"
 #include <algorithm>
 #include <exception>
+#include <map>
+#include<fstream>
+#include<sstream>
+#include<time.h>
 
 
+
+class btcMap
+{
+    public:
+        // btcMap();
+        // ~btcMap();
+        // btcMap(btcMap const &src);
+        // btcMap &operator=(btcMap    const &src);
+        void parse_input(std:: string input_fname);
+        class FailOpen: public std::exception
+        {
+            virtual const char *what() const throw()
+            {
+                return("Failed to open the file.");
+            }
+        };
+    private:
+        std::map<std::array<int, 3>, float> _map_;
+};
 
 
 #endif

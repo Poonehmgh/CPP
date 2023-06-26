@@ -1,16 +1,20 @@
 #include "../inc/btc.hpp"
-#include <map>
-#include<fstream>
-#include<sstream>
+
+
 
 int main(int argc, char **argv) 
 {
+    btcMap  map;
+    // std::map<std::string, float> src;
     if (argc != 2)
         std::cerr << RED"wrong number of arguments!" << std::endl;
-    std::ifstream input_file(argv[1]);
-    if (!input_file.is_open())
-        return(std::cerr << "error in openning the file.\n", 1);
-    std::stringstream   str_buff;
-    str_buff << input_file.rdbuf();
-    
+ 
+    map.parse_input(argv[1]);
+    // std::pair<std::string, float> pair[] ={std::make_pair("B", 2), std::make_pair("C", 3), std::make_pair("D", 4)};
+    // std::map<std::string, float> map1(pair, pair + sizeof(pair)/ sizeof(pair[0]));
+    // map1.insert(std::make_pair("B", 1));
+
+    // for (std::map<std::string, float>::iterator i = map1.begin(); i != map1.end(); i++ )
+    //     std::cout << "key: " << i->first << " value : " << i->second << std::endl;
+
 }
