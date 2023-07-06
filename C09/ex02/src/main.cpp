@@ -65,35 +65,50 @@ std::vector<int> insertion_sort(std::vector<int> arr)
     return(arr);
 }
 
-void fordJohnsonSort(std::vector<int>& arr, int low, int high)
-{
-    if (low < high) {
-        int mid = (low + high) / 2;
+// void fordJohnsonSort(std::vector<int>& arr, int low, int high)
+// {
+//     if (low < high) {
+//         int mid = (low + high) / 2;
         
-        if (mid - low + 1 <= 5) {
-            insertion_sort(arr);
-        } else {
-            fordJohnsonSort(arr, low, mid);
-            fordJohnsonSort(arr, mid + 1, high);
-        }
-        merge_sort(arr);
-    }
-}
+//         if (mid - low + 1 <= 5) {
+//             std::vector<int> tmp(arr.at(low), arr.at(mid));
+//             insertion_sort(tmp);
+//         } else {
+//             fordJohnsonSort(arr, low, mid);
+//             fordJohnsonSort(arr, mid + 1, high);
+//         }
+//         merge_sort(arr);
+//     }
+// }
+std::vector<int> ford_johnson_merge_insert(std::vector<int> arr)
+{
+    int size = arr.size();
 
+    if (size <= 1)
+        return arr;
+
+    std::vector<int> sorted;
+
+    for (int i = 0; i < size; i += 1) {
+        int end = std::min(i + 1, size);
+        std::vector<int> chunk(arr.begin() + i, arr.begin() + end);
+        chunk = insertion_sort(chunk);
+        sorted = merge(sorted, chunk);
+    }
+
+    return sorted;
+}
 
 int main(int argc, char **argv) 
 {
-    int test[] = {50, 5, 33, 0 , 12, 6, 120, 49, 9};
     std::vector<int> test_vect;
     int i = 0;
-    while (i < 9)
+    while (i < argc)
     {
-        test_vect.push_back(test[i]);
+        test_vect.push_back(atoi(argv[i]));
         i++;
     }
-    // fordJohnsonSort(test_vect, 0, 8);
-    // test_vect = merge_sort(test_vect);
-    test_vect = insertion_sort(test_vect);
+    test_vect = ford_johnson_merge_insert(test_vect);
     for(std::vector<int>::iterator i = test_vect.begin(); i != test_vect.end(); i++)
         std::cout << *i << std::endl;
     // mergeInsertionSort(test);
