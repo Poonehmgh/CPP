@@ -119,4 +119,7 @@ void print_data(T &a, double duration_deque, double duration_vect)
     std::cout << "Time to process a range of " << a.size() << " elements with std::vector "GREEN << duration_vect * 1e3 << " ms "RESET << std::endl;
 }
 
+void    input_check(char **argv, int argc);
+
+
 #endif
