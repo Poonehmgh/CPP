@@ -7,11 +7,9 @@
 #define BLUE  "\033[36m"
 #define RED    "\033[0;31m"
 #include <algorithm>
-#include <exception>
-#include<fstream>
-#include<sstream>
-#include<time.h>
 #include<vector>
+#include<deque>
+#include<ctime>
 
 
 template<typename T>
@@ -81,9 +79,6 @@ T insertion_sort(T arr)
     return(arr);
 }
 
-
-
-
 template<typename T>
 T ford_johnson_merge_insert(T arr)
 {
@@ -102,6 +97,26 @@ T ford_johnson_merge_insert(T arr)
     }
 
     return sorted;
+}
+
+
+template<typename T>
+void print_data(T &a, double duration_deque, double duration_vect)
+{
+    int j = 0;
+    std::cout << YELLOW << "AFTER : "; 
+    for (typename T::iterator i = a.begin(); (i != a.end() && j < 4); i++)
+    {
+        std::cout << *i << "  ";
+        j++;
+    }
+    if (a.size() >= 5)
+        std::cout << " [...]" << RESET << std::endl;
+    else
+        std::cout << "\n" << RESET;
+    
+    std::cout << "Time to process a range of " << a.size() << " elements with std::deque "RED << duration_deque * 1e3 << " ms "RESET << std::endl; 
+    std::cout << "Time to process a range of " << a.size() << " elements with std::vector "GREEN << duration_vect * 1e3 << " ms "RESET << std::endl;
 }
 
 #endif
