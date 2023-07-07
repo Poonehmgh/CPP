@@ -12,20 +12,20 @@
 #include<fstream>
 #include<sstream>
 #include<time.h>
-
-
+#include"date.hpp"
 
 class btcMap
 {
     public:
-        // btcMap();
-        // ~btcMap();
-        // btcMap(btcMap const &src);
-        // btcMap &operator=(btcMap    const &src);
-        float find_value(int *key);
-         void parse_input(std:: string input_fname);
-         void date_check(int *date);
-         void buchhaltung(std::string argv);
+        btcMap();
+        ~btcMap();
+        btcMap(btcMap const &src);
+        btcMap &operator=(btcMap    const &src);
+        void parse_date(std::string str, date &time);
+        void find_value(date &date, float amount);
+        void process_input(std:: string input_fname);
+        int date_check(date &date);
+        void buchhaltung(std::string argv);
         class FailOpen: public std::exception
         {
             virtual const char *what() const throw()
@@ -33,22 +33,23 @@ class btcMap
                 return("Failed to open the file.");
             }
         };
-        class DateOutOfRange: public std::exception
+        class wrongArguments: public std::exception
         {
             virtual const char *what() const throw()
             {
-                return("Only the dates between 2009-01-02 and 2022-03-02 are available.");
+                return("Wrong number of arguments.");
             }
         };
-        class DateDoesntExist: public std::exception
+        class InvalidFormat: public std::exception
         {
             virtual const char *what() const throw()
             {
-                return("Date doesnt exist on the calender.");
+                return("Date format must contain ',' in each line for database and '|' in each line for input file and the separator between date and value.");
             }
         };
     private:
-        std::map<std::tm, float> _map_;
+        std::map<date, float> _map_;
+        std::map<date, float> _input_;
 };
 
 

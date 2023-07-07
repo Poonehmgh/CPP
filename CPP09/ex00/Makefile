@@ -1,7 +1,7 @@
 NAME = btc
 SRC_DIR = src
 OBJ_DIR = obj
-SRC = $(SRC_DIR)/main.cpp $(SRC_DIR)/Btc.cpp
+SRC = $(SRC_DIR)/main.cpp $(SRC_DIR)/Btc.cpp $(SRC_DIR)/date.cpp
 OBJ = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC))
 FLAGS = -Wall -Werror -Wextra -std=c++98 -g -pedantic
 #-fsanitize=address
