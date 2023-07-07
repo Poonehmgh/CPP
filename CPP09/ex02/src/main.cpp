@@ -35,5 +35,6 @@ int main(int argc, char **argv)
     double duration_deque = static_cast<double>(end - start) / CLOCKS_PER_SEC;
     
     print_data(vect, duration_deque, duration_vect);
-    //delete vect 
     }
+
+/* test: `jot -r 3000 1 1000 | tr '\n' ' '` */
