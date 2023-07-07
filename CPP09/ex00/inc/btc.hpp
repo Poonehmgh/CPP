@@ -22,7 +22,10 @@ class btcMap
         // ~btcMap();
         // btcMap(btcMap const &src);
         // btcMap &operator=(btcMap    const &src);
-        void parse_input(std:: string input_fname);
+        float find_value(int *key);
+         void parse_input(std:: string input_fname);
+         void date_check(int *date);
+         void buchhaltung(std::string argv);
         class FailOpen: public std::exception
         {
             virtual const char *what() const throw()
@@ -30,8 +33,22 @@ class btcMap
                 return("Failed to open the file.");
             }
         };
+        class DateOutOfRange: public std::exception
+        {
+            virtual const char *what() const throw()
+            {
+                return("Only the dates between 2009-01-02 and 2022-03-02 are available.");
+            }
+        };
+        class DateDoesntExist: public std::exception
+        {
+            virtual const char *what() const throw()
+            {
+                return("Date doesnt exist on the calender.");
+            }
+        };
     private:
-        std::map<std::array<int, 3>, float> _map_;
+        std::map<std::tm, float> _map_;
 };
 
 
