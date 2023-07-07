@@ -70,7 +70,7 @@ void    btcMap::buchhaltung(std::string argv)
 
 int btcMap::date_check(date &key)
 {
-    if (key.getYear() >= 2022 && key.getMonth() > 3)
+    if ((key.getYear() >= 2022 && key.getMonth() > 3) || key.getYear() < 2009)
         return(std::cerr << RED"Error: Date must be between 2009-01-02 and 2023-03-29" << RESET << std::endl, 0);
     /*  calender validity check */
     if ((key.getMonth() == 1 || key.getMonth() == 3 || key.getMonth() == 5 || key.getMonth() == 7 \

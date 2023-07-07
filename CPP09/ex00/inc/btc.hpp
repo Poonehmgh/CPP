@@ -49,7 +49,6 @@ class btcMap
         };
     private:
         std::map<date, float> _map_;
-        std::map<date, float> _input_;
 };
 
 
