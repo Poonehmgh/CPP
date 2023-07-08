@@ -6,7 +6,7 @@ int main(int argc, char **argv)
     try 
     {
         if (argc != 2)
-            throw(btcMap::wrongArguments());
+            throw btcMap::wrongArguments();
         src.process_input("data.csv");
         src.buchhaltung(argv[1]);
     }

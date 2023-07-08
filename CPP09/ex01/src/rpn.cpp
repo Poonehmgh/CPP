@@ -25,7 +25,7 @@ int calculator(char **argv)
         else if (str.at(i) == '+' || str.at(i) == '-' || str.at(i) == '/' || str.at(i) == '*')
         {
             if (number_stack.size() < 2)
-                throw(InvalidOperator());
+                throw InvalidOperator();
             else
             {
                 int a = number_stack.top();
@@ -37,9 +37,9 @@ int calculator(char **argv)
             }
         }
         else if (str.at(i) != ' ')
-            throw(OnlyDigits());
+            throw OnlyDigits();
     }
     if (number_stack.size() != 1)
-        throw(InvalidOperator());
-    return (number_stack.top());
+        throw InvalidOperator();
+    return number_stack.top();
 }

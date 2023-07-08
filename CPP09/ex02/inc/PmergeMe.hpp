@@ -89,8 +89,8 @@ T ford_johnson_merge_insert(T arr)
 
     T sorted;
 
-    for (int i = 0; i < size; i += 10) {
-        int end = std::min(i + 10, size);
+    for (int i = 0; i < size; i += 2) {
+        int end = std::min(i + 2, size);
         T chunk(arr.begin() + i, arr.begin() + end);
         chunk = insertion_sort(chunk);
         sorted = merge(sorted, chunk);

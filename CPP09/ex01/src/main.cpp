@@ -8,7 +8,7 @@ int main(int argc, char **argv)
     try
     {
         if (argc != 2)
-            throw(wrongInput());
+            throw wrongInput();
         int result = calculator(argv);
         std::cout << result << std::endl;
     }catch(std::exception &e)

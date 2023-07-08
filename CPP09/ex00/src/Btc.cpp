@@ -49,7 +49,7 @@ void    btcMap::buchhaltung(std::string argv)
 {
     std::ifstream input_file(argv);
     if (!input_file.is_open())
-        throw(FailOpen());
+        throw FailOpen();
     std::stringstream   str_buff;
     str_buff << input_file.rdbuf();
     std::string line;
@@ -108,7 +108,7 @@ void btcMap::process_input(std:: string input_file_name)
 {
     std::ifstream   input_file(input_file_name);
     if (!input_file.is_open())
-        throw(FailOpen());
+        throw FailOpen();
     std::stringstream   str_buff;
     str_buff << input_file.rdbuf();
     std::string         line;
@@ -129,6 +129,6 @@ void btcMap::process_input(std:: string input_file_name)
             _map_.insert(std::make_pair(time, amount));
         }
         else
-            throw(btcMap::InvalidFormat());
+            throw btcMap::InvalidFormat();
     }
 }
